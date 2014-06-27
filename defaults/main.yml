@@ -84,7 +84,7 @@ aspects_openssh_confd:
     keyword: Subsystem
     argument:
        Debian: "sftp /usr/lib/openssh/sftp-server"
-       RedHat: "sftp /usr/libexec/sftp-server"
+       RedHat: "sftp /usr/libexec/openssh/sftp-server"
   usepam:
     keyword: UsePAM
     argument: "yes"
