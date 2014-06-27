@@ -1,0 +1,5 @@
+---
+# vars file for aspects_openssh
+aspects_common_packages:
+  openssh:
+    state: "latest"

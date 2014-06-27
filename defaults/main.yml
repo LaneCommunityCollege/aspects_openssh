@@ -1,0 +1,98 @@
+---
+# defaults file for aspects_openssh
+aspects_openssh_confd:
+  protocol:
+    keyword: Protocol
+    argument: "2"
+  port:
+    keyword: Port
+    argument: "22"
+  rsahostkey:
+    keyword: HostKey
+    argument: "/etc/ssh/ssh_host_rsa_key"
+  dsahostkey:
+    keyword: HostKey
+    argument: "/etc/ssh/ssh_host_dsa_key"
+  ecdsahostkey:
+    keyword: HostKey
+    argument:
+      Debian: "/etc/ssh/ssh_host_ecdsa_key"
+  usprivilegeseparation:
+    keyword: UsePrivilegeSeparation
+    argument: "yes"
+  keyregenerationinterval:
+    keyword: KeyRegenerationInterval
+    argument: "3600"
+  serverkeybits:
+    keyword: ServerKeyBits
+    argument: "768"
+  syslogfacility:
+    keyword: SyslogFacility
+    argument: "AUTH"
+  loglevel:
+    keyword: LogLevel
+    argument: "INFO"
+  logingracetime:
+    keyword: LoginGraceTime
+    argument: "120"
+  permitrootlogin:
+    keyword: PermitRootLogin
+    argument: "no"
+  rsaauthentication:
+    keyword: RSAAuthentication
+    argument: "yes"
+  pubkeyauthentication:
+    keyword: PubkeyAuthentication
+    argument: "yes"
+  ignorerhosts:
+    keyword: IgnoreRhosts
+    argument: "yes"
+  rhostsrsaauthentication:
+    keyword: RhostsRSAAuthentication
+    argument: "no"
+  hostbasedauthentication:
+    keyword: HostbasedAuthentication
+    argument: "no"
+  permitemptypasswords:
+    keyword: PermitEmptyPasswords
+    argument: "no"
+  challengeresponseauthentication:
+    keyword: ChallengeResponseAuthentication
+    argument: "no"
+  passwordauthentication:
+    keyword: PasswordAuthentication
+    argument: "yes"
+  x11forwarding:
+    keyword: X11Forwarding
+    argument: "yes"
+  x11displayoffset:
+    keyword: X11DisplayOffset
+    argument: "10"
+  printmotd:
+    keyword: PrintMotd
+    argument: "no"
+  printlastlog:
+    keyword: PrintLastLog
+    argument: "yes"
+  tcpkeepalive:
+    keyword: TCPKeepAlive
+    argument: "yes"
+  acceptlocalenv:
+    keyword: AcceptEnv
+    argument: "LANG LC_*"
+  subsystemsftp:
+    keyword: Subsystem
+    argument:
+       Debian: "sftp /usr/lib/openssh/sftp-server"
+       RedHat: "sftp /usr/libexec/sftp-server"
+  usepam:
+    keyword: UsePAM
+    argument: "yes"
+
+aspects_openssh_confd_matches: {}
+#  anoncvs:
+#    condition: "Match User anoncvs"
+#    overrides:
+#      protocol:
+#        keyword: Protocol
+#        argument: "2"

@@ -1,0 +1,36 @@
+###############################################################
+## This file is managed by Ansible.
+## Local changes will be overwritten next time Ansible is run.
+## DO NOT MAKE LOCAL CHANGES
+## {{ ansible_managed }}
+###############################################################
+
+# See the sshd_config(5) manpage for details on what options you can set.
+{% if aspects_openssh_confd is defined %}
+{% for config in aspects_openssh_confd %}
+{% if ansible_os_family == "Debian" and aspects_openssh_confd[config].argument.Debian is defined %}
+{{ aspects_openssh_confd[config].keyword }} {{ aspects_openssh_confd[config].argument.Debian }}
+{% elif ansible_os_family == "RedHat" and aspects_openssh_confd[config].argument.RedHat is defined %}
+{{ aspects_openssh_confd[config].keyword }} {{ aspects_openssh_confd[config].argument.RedHat }}
+{% elif aspects_openssh_confd[config].argument is defined and aspects_openssh_confd[config].argument.RedHat is not defined and aspects_openssh_confd[config].argument.Debian is not defined %}
+{{ aspects_openssh_confd[config].keyword }} {{ aspects_openssh_confd[config].argument }}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if aspects_openssh_confd_matches is defined %}
+{% for matches in aspects_openssh_confd_matches %}
+{% if aspects_openssh_confd_matches[matches].condition is defined %}
+{{ aspects_openssh_confd_matches[matches].condition }}
+{% for config in aspects_openssh_confd_matches[matches].overrides %}
+{% if ansible_os_family == "Debian" and aspects_openssh_confd_matches[matches].overrides[config].argument.Debian is defined %}
+{{ aspects_openssh_confd_matches[matches].overrides[config].keyword }} {{ aspects_openssh_confd_matches[matches].overrides[config].argument.Debian }}
+{% elif ansible_os_family == "RedHat" and aspects_openssh_confd_matches[matches].overrides[config].argument.RedHat is defined %}
+{{ aspects_openssh_confd_matches[matches].overrides[config].keyword }} {{ aspects_openssh_confd_matches[matches].overrides[config].argument.RedHat }}
+{% elif aspects_openssh_confd_matches[matches].overrides[config].argument is defined and aspects_openssh_confd_matches[matches].overrides[config].argument.Debian is not defined and aspects_openssh_confd_matches[matches].overrides[config].argument.RedHat is not defined %}
+{{ aspects_openssh_confd_matches[matches].overrides[config].keyword }} {{ aspects_openssh_confd_matches[matches].overrides[config].argument }}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
