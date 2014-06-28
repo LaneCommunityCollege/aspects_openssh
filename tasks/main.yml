@@ -4,6 +4,8 @@
   when: ansible_os_family == "RedHat"
 - include_vars: DebianServiceName.yml
   when: ansible_os_family == "Debian"
+- include_vars: SuseServiceName.yml
+  when: ansible_os_family == "Suse"
 
 - name: set sshd_config template
   template: src=etc-ssh-sshd_config.j2 dest=/etc/ssh/sshd_config
