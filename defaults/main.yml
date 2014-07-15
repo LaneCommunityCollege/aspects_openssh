@@ -61,7 +61,7 @@ aspects_openssh_confd:
     argument: "no"
   passwordauthentication:
     keyword: PasswordAuthentication
-    argument: "yes"
+    argument: "no"
   x11forwarding:
     keyword: X11Forwarding
     argument: "yes"
