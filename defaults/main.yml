@@ -1,5 +1,11 @@
 ---
 # defaults file for aspects_openssh
+aspects_openssh_packages:
+  openssh:
+    state: "latest"
+    Debian: ssh
+    RedHat: openssh-server
+    Suse: openssh
 aspects_openssh_confd:
   protocol:
     keyword: Protocol

@@ -19,7 +19,7 @@ The name of the service for use in the handlers file.
 It is set in OS family specific vars files, and included at the top of tasks/main.yml according to which OS family the host is running.
 
 # Dependencies
-* aspects_common_packages
+None.
 
 # Example Playbook
 
