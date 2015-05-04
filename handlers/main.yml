@@ -2,10 +2,25 @@
 # handlers file for aspects_openssh
 
 - name: restart ssh
-  service: name={{ aspects_openssh_service_name }} state=restarted enabled=yes
+  service:
+    name: "{{ aspects_openssh_service_name }}"
+    state: restarted
+    enabled: yes
+  tags:
+    - aspects_openssh
 
 - name: start ssh
-  service: name={{ aspects_openssh_service_name }} state=started enabled=yes
+  service:
+    name: "{{ aspects_openssh_service_name }}"
+    state: started
+    enabled: yes
+  tags:
+    - aspects_openssh
 
 - name: stop ssh
-  service: name={{ aspects_openssh_service_name }} state=stopped enabled=no
+  service:
+    name: "{{ aspects_openssh_service_name }}"
+    state: stopped
+    enabled: no
+  tags:
+    - aspects_openssh
