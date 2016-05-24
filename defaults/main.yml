@@ -70,7 +70,7 @@ aspects_openssh_confd:
     argument: "no"
   x11forwarding:
     keyword: X11Forwarding
-    argument: "yes"
+    argument: "no"
   x11displayoffset:
     keyword: X11DisplayOffset
     argument: "10"
