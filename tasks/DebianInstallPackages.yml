@@ -1,0 +1,27 @@
+---
+- name: Debian - Install python-apt for use with ansible apt modules.
+  when: ansible_pkg_mgr == "apt"
+  apt:
+    pkg: python-apt
+    state: latest
+    update_cache: "yes"
+    cache_valid_time: "86400"
+  tags:
+    - aspects_openssh
+    - aspects_openssh_package_install
+
+- name: Debian - Install openssh packages with apt
+  when:
+    ansible_pkg_mgr == "apt" and
+    item.value.state != "default" and
+    item.value.state != "purged" and
+    item.value.Debian is defined
+  apt:
+    pkg: "{{ item.value.Debian }}"
+    state: "{{ item.value.state }}"
+    update_cache: "yes"
+    cache_valid_time: "86400"
+  with_dict: "{{ aspects_openssh_packages }}"
+  tags:
+    - aspects_openssh
+    - aspects_openssh_package_install

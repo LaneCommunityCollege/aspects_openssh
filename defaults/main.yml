@@ -1,104 +1,84 @@
 ---
 # defaults file for aspects_openssh
+aspects_openssh_enabled: False
+
 aspects_openssh_packages:
   openssh:
-    state: "latest"
+    state: "present"
     Debian: ssh
     RedHat: openssh-server
     Suse: openssh
+
+# /etc/ssh/sshd_config defaults set to defaults described at
+# https://linux.die.net/man/5/sshd_config
+# Except for Protocol, in this role, protocol version 1 is disabled.
 aspects_openssh_confd:
-  protocol:
+  00000protocol:
     keyword: Protocol
     argument: "2"
-  port:
+  00010port:
     keyword: Port
     argument: "22"
-  rsahostkey:
+  00020rsahostkey:
     keyword: HostKey
     argument: "/etc/ssh/ssh_host_rsa_key"
-  dsahostkey:
+  00030ecdsahostkey:
     keyword: HostKey
-    argument: "/etc/ssh/ssh_host_dsa_key"
-  ecdsahostkey:
-    keyword: HostKey
-    argument:
-      Debian: "/etc/ssh/ssh_host_ecdsa_key"
-  usprivilegeseparation:
+    argument: "/etc/ssh/ssh_host_ecdsa_key"
+  00040ed25519key:
+    keyword: "HostKey"
+    argument: "/etc/ssh/ssh_host_ed25519_key"
+  00050useprivilegeseparation:
     keyword: UsePrivilegeSeparation
     argument: "yes"
-  keyregenerationinterval:
-    keyword: KeyRegenerationInterval
-    argument: "3600"
-  serverkeybits:
-    keyword: ServerKeyBits
-    argument: "768"
-  syslogfacility:
+  00060syslogfacility:
     keyword: SyslogFacility
     argument: "AUTH"
-  loglevel:
+  00070loglevel:
     keyword: LogLevel
     argument: "INFO"
-  logingracetime:
+  00080logingracetime:
     keyword: LoginGraceTime
     argument: "120"
-  permitrootlogin:
+  00090permitrootlogin:
     keyword: PermitRootLogin
-    argument: "no"
-  rsaauthentication:
-    keyword: RSAAuthentication
     argument: "yes"
-  pubkeyauthentication:
+  00100pubkeyauthentication:
     keyword: PubkeyAuthentication
     argument: "yes"
-  ignorerhosts:
+  00200ignorerhosts:
     keyword: IgnoreRhosts
     argument: "yes"
-  rhostsrsaauthentication:
-    keyword: RhostsRSAAuthentication
-    argument: "no"
-  hostbasedauthentication:
+  00300hostbasedauthentication:
     keyword: HostbasedAuthentication
     argument: "no"
-  permitemptypasswords:
+  00400permitemptypasswords:
     keyword: PermitEmptyPasswords
     argument: "no"
-  challengeresponseauthentication:
+  00500challengeresponseauthentication:
     keyword: ChallengeResponseAuthentication
     argument: "no"
-  passwordauthentication:
+  00600passwordauthentication:
     keyword: PasswordAuthentication
     argument: "no"
-  x11forwarding:
+  00700x11forwarding:
     keyword: X11Forwarding
     argument: "no"
-  x11displayoffset:
+  00800x11displayoffset:
     keyword: X11DisplayOffset
     argument: "10"
-  printmotd:
+  00900printmotd:
     keyword: PrintMotd
-    argument: "no"
-  printlastlog:
+    argument: "yes"
+  01000printlastlog:
     keyword: PrintLastLog
     argument: "yes"
-  tcpkeepalive:
+  02000tcpkeepalive:
     keyword: TCPKeepAlive
     argument: "yes"
-  acceptlocalenv:
-    keyword: AcceptEnv
-    argument: "LANG LC_*"
-  subsystemsftp:
-    keyword: Subsystem
-    argument:
-       Debian: "sftp /usr/lib/openssh/sftp-server"
-       RedHat: "sftp /usr/libexec/openssh/sftp-server"
-  usepam:
+  03000usepam:
     keyword: UsePAM
-    argument: "yes"
+    argument: "no"
 
 aspects_openssh_confd_matches: {}
-#  anoncvs:
-#    condition: "Match User anoncvs"
-#    overrides:
-#      protocol:
-#        keyword: Protocol
-#        argument: "2"
+

@@ -1,14 +1,8 @@
 ---
-# tasks file for aspects_openssh
-- include_vars: "{{ ansible_os_family }}.yml"
+- name: Run aspects_openssh tasks
+  when: aspects_openssh_enabled
+  include: "init.yml"
   tags:
     - aspects_openssh
+    - aspects_openssh_package_install
 
-- name: set sshd_config template
-  template:
-    src: etc-ssh-sshd_config.j2
-    dest: /etc/ssh/sshd_config
-  notify:
-    - restart ssh
-  tags:
-    - aspects_openssh
