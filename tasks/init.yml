@@ -1,15 +1,4 @@
 ---
-# tasks file for aspects_openssh
-- include_vars: "{{ ansible_os_family }}.yml"
-  tags:
-    - aspects_openssh
-
-- name: Include appropriate InstallPackages file.
-  include: "{{ ansible_os_family }}InstallPackages.yml"
-  tags:
-    - aspects_openssh
-    - aspects_openssh_package_install
-
 - name: set sshd_config template
   template:
     src: etc-ssh-sshd_config.j2

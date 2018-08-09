@@ -5,6 +5,9 @@ Install openssh server and configure /etc/ssh/sshd_config.
 Set ```hash_behaviour=merge``` in your ansible.cfg file.
 
 # Role Variables
+## aspects_packages_enabled
+Turn [aspects_packages](https://github.com/LaneCommunityCollege/aspects_packages) on or off.
+
 ## aspects_openssh_enabled
 Enable or disable tasks in this role. Set to ```True``` to run tasks. Set to ```False``` to block tasks. Default is set to ```False```.
 
@@ -33,7 +36,9 @@ The name of the service for use in the handlers file.
 It is set in OS family specific vars files, and included at the top of tasks/init.yml according to which OS family the host is running.
 
 # Dependencies
-None.
+
+## aspects_packages
+[aspects_packages](https://github.com/LaneCommunityCollege/aspects_packages) is used to manage packages.
 
 # Example Playbook
 
@@ -42,6 +47,7 @@ None.
       roles:
          - { role: aspects_openssh }
       vars:
+        aspects_packages_enabled: True
         aspects_openssh_enabled: True
         aspects_openssh_confd:
           00000protocol:

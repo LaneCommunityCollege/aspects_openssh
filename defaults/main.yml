@@ -3,11 +3,40 @@
 aspects_openssh_enabled: False
 
 aspects_openssh_packages:
-  openssh:
+  openssh-server:
     state: "present"
-    Debian: ssh
-    RedHat: openssh-server
-    Suse: openssh
+    Ubuntu:
+      1404: "openssh-server"
+      1604: "openssh-server"
+      1804: "openssh-server"
+    Debian:
+      9: "openssh-server"
+    CentOS:
+      7: "openssh-server"
+    OracleLinux:
+      6: "openssh-server"
+      7: "openssh-server"
+  openssh-client:
+    state: "present"
+    Ubuntu:
+      1404: "openssh-client"
+      1604: "openssh-client"
+      1804: "openssh-client"
+    Debian:
+      9: "openssh-client"
+    CentOS:
+      7: "openssh-clients"
+    OracleLinux:
+      6: "openssh-clients"
+      7: "openssh-clients"
+  openssh-sftp-server:
+    state: "present"
+    Ubuntu:
+      1404: "openssh-sftp-server"
+      1604: "openssh-sftp-server"
+      1804: "openssh-sftp-server"
+    Debian:
+      9: "openssh-sftp-server"
 
 # /etc/ssh/sshd_config defaults set to defaults described at
 # https://linux.die.net/man/5/sshd_config
@@ -82,3 +111,4 @@ aspects_openssh_confd:
 
 aspects_openssh_confd_matches: {}
 
+aspects_openssh_service_name: "{% if ansible_os_family == 'RedHat' %}sshd{% else %}ssh{% endif %}"
