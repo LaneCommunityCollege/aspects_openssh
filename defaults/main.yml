@@ -58,8 +58,8 @@ aspects_openssh_confd:
     keyword: "HostKey"
     argument: "/etc/ssh/ssh_host_ed25519_key"
   00050useprivilegeseparation:
-    keyword: UsePrivilegeSeparation
-    argument: "yes"
+    keyword: ""
+    argument: ""
   00060syslogfacility:
     keyword: SyslogFacility
     argument: "AUTH"
