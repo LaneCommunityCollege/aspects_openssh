@@ -1,6 +1,5 @@
 ---
 # handlers file for aspects_openssh
-
 - name: restart ssh
   service:
     name: "{{ aspects_openssh_service_name }}"

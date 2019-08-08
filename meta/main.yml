@@ -4,14 +4,13 @@ galaxy_info:
   description: Install Openssh server and configure /etc/ssh/sshd_config
   company: Lane Community College
   license: MIT
-  min_ansible_version: 2.4
+  min_ansible_version: 2.8
   platforms:
   - name: CentOS
     versions:
     - 7
   - name: Ubuntu
     versions:
-    - trusty
     - xenial
     - bionic
   - name: Debian
@@ -19,7 +18,6 @@ galaxy_info:
     - stretch
   - name: OracleLinux
     versions:
-    - 6
     - 7
   categories:
   - system

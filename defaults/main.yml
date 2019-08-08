@@ -6,7 +6,6 @@ aspects_openssh_packages:
   openssh-server:
     state: "present"
     Ubuntu:
-      1404: "openssh-server"
       1604: "openssh-server"
       1804: "openssh-server"
     Debian:
@@ -14,12 +13,10 @@ aspects_openssh_packages:
     CentOS:
       7: "openssh-server"
     OracleLinux:
-      6: "openssh-server"
       7: "openssh-server"
   openssh-client:
     state: "present"
     Ubuntu:
-      1404: "openssh-client"
       1604: "openssh-client"
       1804: "openssh-client"
     Debian:
@@ -27,12 +24,10 @@ aspects_openssh_packages:
     CentOS:
       7: "openssh-clients"
     OracleLinux:
-      6: "openssh-clients"
       7: "openssh-clients"
   openssh-sftp-server:
     state: "present"
     Ubuntu:
-      1404: "openssh-sftp-server"
       1604: "openssh-sftp-server"
       1804: "openssh-sftp-server"
     Debian:

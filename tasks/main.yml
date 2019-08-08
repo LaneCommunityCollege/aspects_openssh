@@ -1,7 +1,7 @@
 ---
 - name: Run aspects_openssh tasks
   when: aspects_openssh_enabled
-  include: "init.yml"
+  include_tasks: "init.yml"
   tags:
     - aspects_openssh
     - aspects_openssh_package_install
