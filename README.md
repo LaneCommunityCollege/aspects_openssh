@@ -35,6 +35,14 @@ The name of the service for use in the handlers file.
 
 It is set in OS family specific vars files, and included at the top of tasks/init.yml according to which OS family the host is running.
 
+## aspects_openssh_subsystem_sftp
+`sftp-server` is installed to different locations on RedHat and Debian based distributions.
+The value in defaults should work for both via Jinja templating.
+```
+{% if ansible_os_family == 'RedHat' %}/usr/libexec/openssh/sftp-server{% else %}/usr/lib/openssh/sftp-server{% endif %}
+```
+If that doesn't work, you can override it.
+
 # Dependencies
 
 ## aspects_packages
