@@ -109,9 +109,6 @@ aspects_openssh_confd:
   03000usepam:
     keyword: UsePAM
     argument: "no"
-  04001subsystemsftp:
-    keyword: Subsystem
-    argument: "sftp {{ aspects_openssh_subsystem_sftp }}"
 
 aspects_openssh_confd_matches: {}
 
