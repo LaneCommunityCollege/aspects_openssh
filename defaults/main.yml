@@ -8,6 +8,7 @@ aspects_openssh_packages:
     Ubuntu:
       1804: "openssh-server"
       2004: "openssh-server"
+      2204: "openssh-server"
     Debian:
       10: "openssh-server"
     CentOS:
@@ -19,6 +20,7 @@ aspects_openssh_packages:
     Ubuntu:
       1804: "openssh-client"
       2004: "openssh-client"
+      2204: "openssh-client"
     Debian:
       10: "openssh-client"
     CentOS:
@@ -30,6 +32,7 @@ aspects_openssh_packages:
     Ubuntu:
       1804: "openssh-sftp-server"
       2004: "openssh-sftp-server"
+      2204: "openssh-sftp-server"
     Debian:
       10: "openssh-sftp-server"
 
@@ -104,7 +107,7 @@ aspects_openssh_confd:
     keyword: UsePAM
     argument: "no"
 
-aspects_openssh_confd_matches: {}
+aspects_openssh_confd_matches: { }
 
 aspects_openssh_service_name: "{% if ansible_os_family == 'RedHat' %}sshd{% else %}ssh{% endif %}"
 
