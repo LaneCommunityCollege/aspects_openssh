@@ -11,10 +11,13 @@ aspects_openssh_packages:
       2204: "openssh-server"
     Debian:
       10: "openssh-server"
+      11: "openssh-server"
     CentOS:
       7: "openssh-server"
     OracleLinux:
       7: "openssh-server"
+      8: "openssh-server"
+      9: "openssh-server"
   openssh-client:
     state: "present"
     Ubuntu:
@@ -23,10 +26,13 @@ aspects_openssh_packages:
       2204: "openssh-client"
     Debian:
       10: "openssh-client"
+      11: "openssh-client"
     CentOS:
       7: "openssh-clients"
     OracleLinux:
       7: "openssh-clients"
+      8: "openssh-clients"
+      9: "openssh-clients"
   openssh-sftp-server:
     state: "present"
     Ubuntu:
